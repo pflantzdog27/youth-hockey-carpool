@@ -1,4 +1,4 @@
-// Full content for 'index.js' in the backend directory\
+// Full content for 'index.js' in the backend directory
 // Youth Hockey Team Carpool App Backend
 
 const express = require('express');
@@ -71,6 +71,10 @@ app.post('/api/auth/login', async (req, res) => {
 const authRoutes = require('./routes/auth');
 app.use('/api/auth', authRoutes);
 
+// Carpool Routes
+const carpoolRoutes = require('./routes/carpool'); // Corrected from 'carpools' to 'carpool'
+app.use('/api/carpools', carpoolRoutes);
+
 // Import the auth middleware
 const authMiddleware = require('./authMiddleware');
 
@@ -78,7 +82,6 @@ const authMiddleware = require('./authMiddleware');
 app.get('/api/auth/protected', authMiddleware, (req, res) => {
   res.json({ message: 'Welcome to the protected route, authorized user!' });
 });
-
 
 // Port configuration
 const PORT = process.env.PORT || 5000;
